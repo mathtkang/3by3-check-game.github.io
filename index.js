@@ -10,7 +10,6 @@ const correct = new Map(//객체화
   ]);
 let score = 0;
 let miss = 0;
-console.log(boxes);
 
 flags.fill(0);
 
@@ -18,7 +17,7 @@ flags.fill(0);
 function draw(){
     for (let i = 0; i < 9; i++){
         if(flags[i] === 1){
-            boxes[i].style.backgroundColor = "blue";
+            boxes[i].style.backgroundColor = "rgb(237, 160, 244)";
         } else {
             boxes[i].style.backgroundColor = "white";
         }
@@ -36,10 +35,11 @@ setInterval(function () {
   }
 
     const rand1 = Math.floor(Math.random() * 9); //0~1사이의 난수 *9 곱해주고 소숫점 날려줌
+    const rand2 = Math.floor(Math.random() * 9);
     flags[rand1] = 1;
-
+    flags[rand2] = 1;
     draw();
-}, 1500);
+}, 1000);
 
 window.addEventListener("keydown", function(e){
     const keytype = e.key;
@@ -50,6 +50,5 @@ window.addEventListener("keydown", function(e){
         score += 1;
         flags[idx] = 0;
         draw();
-
     }
 });
